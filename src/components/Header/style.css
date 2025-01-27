@@ -8,19 +8,7 @@
     text-align: left;
     border-bottom: 0px solid #ffffff; /* Adds a subtle bottom border */
     font-family: Arial, sans-serif;
-    margin-bottom: 100px;
-  }
-  .header-input {
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: flex-end;
-  }
-  .header-input  input{
-    display: flex;
-    width: 300px;
-    height: 100px;
+    margin-bottom: 20px;
   }
 
   .header h2 {
@@ -38,4 +26,57 @@
     font-weight: 500;
   }
   
- 
+ /*  */
+.header-input {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-end;;
+}
+.input-group {
+  display: flex;
+      justify-content: center;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: space-around;
+      width: 250px;
+      align-items: stretch
+}
+
+.header-input input {
+ /*  flex: 1; */
+  width: 200px;
+  height: 100px;
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.header-input input:focus {
+  border-color: #007bff; /* Highlight color when focused */
+}
+
+.add-task-btn {
+  height: 30px;
+  width: 60px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #2a3c55;
+  border: none;
+  border-radius: 80px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-task-btn:hover {
+  background-color: #11273f; /* Darker blue for hover state */
+}
+
+.add-task-btn:active {
+  background-color: #0d1d2e; /* Even darker blue for active state */
+}
+

@@ -25,14 +25,16 @@ function Header({ addTask }) {
     <>
       <header className="header">
         <div>
-        <h2>Simple To Do List</h2>
-        <span className="text-header">
-          Today is an awesome day. The weather is awesome, you are awesome too!
-        </span>
+          <h2>Simple To Do List</h2>
+          <span className="text-header">
+            Today is an awesome day. The weather is awesome, you are awesome too!
+          </span>
         </div>
       </header>
 
       <div className="header-input">
+          <div className="input-group">
+          <span>Add New To Do</span>
           <input
             ref={inputRef}
             type="text"
@@ -43,10 +45,11 @@ function Header({ addTask }) {
               if (e.key === "Enter") handleAddTask();
             }}
           />
-          <button onClick={handleAddTask} className="add-task-btn">
+          <button onClick={handleAddTask} className="add-task-btn mt-2 mx-2">
             Add
           </button>
-        </div>
+          </div>
+      </div>
 
     </>
   );
