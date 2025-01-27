@@ -29,13 +29,18 @@ function Trash() {
       }
       return prevTrashTasks.filter((task) => task.id !== id);
     });
+
+    // Close the dropdown menu
+    setVisibility(null);
   };
-  
 
   const deleteForever = (id) => {
     setTrashTasks((prevTrashTasks) =>
       prevTrashTasks.filter((task) => task.id !== id)
     );
+
+    // Close the dropdown menu
+    setVisibility(null);
   };
 
   const toggleVisibility = (index) => {
@@ -51,23 +56,22 @@ function Trash() {
       <ul className="todo-list">
         {trashTasks.map((task, index) => (
           <li key={task.id} className="todo-item">
-            <button
-              className="button-item-2"
-              onClick={() => toggleVisibility(index)}
-            >
-              ⋮
-            </button>
-            {visibility === index && (
-              <div className="dropdownMenu-2">
-                <button className="mx-3 mt-2"onClick={() => returnTask(task.id)}>Вернуть</button >
-                <button  className="mx-3 mt-2"onClick={() => deleteForever(task.id)}>
-                  Удалить навсегда
-                </button>
-              </div>
-            )}
-            <span>{task.name}</span>
             <div className="taskItem">
+              <button
+                className="button-item"
+                onClick={() => toggleVisibility(index)}
+              >
+                ⋮
+              </button>
+
+              {visibility === index && (
+                <div className="dropdownMenu">
+                  <span onClick={() => returnTask(task.id)}>Вернуть</span>
+                  <span onClick={() => deleteForever(task.id)}>Удалить навсегда</span>
+                </div>
+              )}
             </div>
+            <span className="mx-2">{task.name}</span>
           </li>
         ))}
       </ul>

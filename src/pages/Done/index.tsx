@@ -16,6 +16,8 @@ function Done() {
     return savedTrashTasks ? JSON.parse(savedTrashTasks) : [];
   });
 
+  const [visibility, setVisibility] = useState(null);
+
   useEffect(() => {
     localStorage.setItem("doneTasks", JSON.stringify(doneTasks));
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -45,25 +47,47 @@ function Done() {
       }
       return prevDoneTasks.filter((task) => task.id !== id);
     });
+
+    // Close dropdown menu
+    setVisibility(null);
+  };
+
+  const toggleVisibility = (index) => {
+    setVisibility((prev) => (prev === index ? null : index));
   };
 
   return (
     <div>
-       <div className="todo-header">
-      <h3>Done</h3>
+      <div className="todo-header">
+        <h3>Done</h3>
       </div>
       <hr />
       <ul className="todo-list">
-        {doneTasks.map((task) => (
+        {doneTasks.map((task, index) => (
           <li key={task.id} className="todo-item">
+            <div className="taskItem">
+              <button
+                className="button-item"
+                onClick={() => toggleVisibility(index)}
+              >
+                ⋮
+              </button>
+
+              {visibility === index && (
+                <div className="dropdownMenu">
+                  <span onClick={() => deleteTask(task.id)}>Move to Trash</span>
+                </div>
+              )}
+            </div>
             <input
               type="checkbox"
               id={`task${task.id}`}
               checked={task.done}
               onChange={() => toggleTask(task.id)}
             />
-            <label htmlFor={`task${task.id}`}>{task.name}</label>
-            <button onClick={() => deleteTask(task.id)}>Удалить</button>
+            <label htmlFor={`task${task.id}`} className="mx-2">
+              {task.name}
+            </label>
           </li>
         ))}
       </ul>
