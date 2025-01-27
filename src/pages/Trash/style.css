@@ -35,3 +35,6 @@ h3 {
 .taskItem {
     position: relative;
 }
+.trash-span {
+    display: block;
+}

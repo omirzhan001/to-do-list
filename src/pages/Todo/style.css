@@ -38,10 +38,10 @@ h3 {
 
 .dropdownMenu {
     display:flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     position: absolute;
-    width: 150px;
+    width: 200px;
     height:40px; 
     left: 20px;
     background-color: #eeeaea;
@@ -49,6 +49,16 @@ h3 {
     box-shadow: 5px 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     z-index: 100;
+}
+.trash-span {
+    display: flex;
+    width: 200px;
+    font-size: 14px; 
+    height: 80px;
+    flex-direction: column;
+    align-content: flex-start;
+    align-items: flex-start
+    
 }
 
 .button-item {
@@ -71,10 +81,10 @@ h3 {
   
   .hover-cursor {
     cursor: pointer;
-    color: blue;
+    color: rgb(0, 0, 0);
   }
   
   .hover-cursor:hover {
-    color: red;
+    color: rgb(68, 51, 51);
   }
   

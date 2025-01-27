@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
+import TrashIcon from "../icon";
+import Header from "../../components/Header/";
 
 function Todo() {
   const [tasks, setTasks] = useState(() => {
@@ -7,12 +9,12 @@ function Todo() {
     return savedTasks
       ? JSON.parse(savedTasks)
       : [
-          { id: 1, name: "Написать эссе", done: false },
-          { id: 2, name: "Пройти часовой курс CSS онлайн", done: false },
-          { id: 3, name: "Купить билеты в Сан-Франциско", done: false },
-          { id: 4, name: "Сходить в спортзал", done: false },
-          { id: 5, name: "Купить продукты", done: false },
-        ];
+        { id: 1, name: "Написать эссе", done: false },
+        { id: 2, name: "Пройти часовой курс CSS онлайн", done: false },
+        { id: 3, name: "Купить билеты в Сан-Франциско", done: false },
+        { id: 4, name: "Сходить в спортзал", done: false },
+        { id: 5, name: "Купить продукты", done: false },
+      ];
   });
 
   const [doneTasks, setDoneTasks] = useState(() => {
@@ -47,7 +49,7 @@ function Todo() {
       return updatedTasks.filter((task) => !task.done);
     });
   };
-
+  
   const addTask = (name) => {
     const newTask = {
       id: tasks.length + 1 + doneTasks.length + trashTasks.length,
@@ -57,21 +59,18 @@ function Todo() {
     setTasks((prevTasks) => [...prevTasks, newTask]);
   };
 
+  
   const deleteTask = (id) => {
     setTasks((prevTasks) => {
       const deletedTask = prevTasks.find((task) => task.id === id);
       if (deletedTask) {
         setTrashTasks((prevTrashTasks) => {
-          // Проверяем, есть ли задача уже в корзине
           const isTaskInTrash = prevTrashTasks.some((task) => task.id === deletedTask.id);
           return isTaskInTrash ? prevTrashTasks : [...prevTrashTasks, deletedTask];
         });
       }
-      // Удаляем задачу из списка задач
       return prevTasks.filter((task) => task.id !== id);
     });
-  
-    // Закрыть выпадающее меню
     setVisibility(null);
   };
 
@@ -84,16 +83,6 @@ function Todo() {
       <header>
         <div className="todo-header">
           <h3>Todo</h3>
-          <input
-            type="text"
-            placeholder="Добавить новую задачу"
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && e.target.value.trim() !== "") {
-                addTask(e.target.value.trim());
-                e.target.value = "";
-              }
-            }}
-          />
         </div>
         <hr />
 
@@ -107,10 +96,12 @@ function Todo() {
                 >
                   ⋮
                 </button>
-
                 {visibility === index && (
                   <div className="dropdownMenu">
-                    <span onClick={() => deleteTask(task.id)}>Move to Trash</span>
+                    <TrashIcon />
+                    <span className="hover-cursor mx-2" onClick={() => deleteTask(task.id)}>
+                      Move to Trash
+                    </span>
                   </div>
                 )}
               </div>

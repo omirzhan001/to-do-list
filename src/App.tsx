@@ -10,7 +10,8 @@ function App() {
   return (
     <div className='container'>
       <BrowserRouter>
-      <Header />
+      
+      <Header/>
       <nav >
         <ul className='nav '>
           <li className='button__nav  '>

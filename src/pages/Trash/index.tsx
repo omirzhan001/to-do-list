@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import  TrashIcon  from "../icon";
+import CheckIcon from "../checkIcon";
 
 function Trash() {
   const [trashTasks, setTrashTasks] = useState(() => {
@@ -30,7 +32,7 @@ function Trash() {
       return prevTrashTasks.filter((task) => task.id !== id);
     });
 
-    // Close the dropdown menu
+  
     setVisibility(null);
   };
 
@@ -39,7 +41,6 @@ function Trash() {
       prevTrashTasks.filter((task) => task.id !== id)
     );
 
-    // Close the dropdown menu
     setVisibility(null);
   };
 
@@ -65,9 +66,11 @@ function Trash() {
               </button>
 
               {visibility === index && (
-                <div className="dropdownMenu">
-                  <span onClick={() => returnTask(task.id)}>Вернуть</span>
-                  <span onClick={() => deleteForever(task.id)}>Удалить навсегда</span>
+                <div className="trash-span dropdownMenu ">
+                
+                  <span  className="hover-cursor" onClick={() => deleteForever(task.id)}> <TrashIcon/> <span className="mx-2 ">Delete Forever</span></span>
+                  <span className="hover-cursor mt-2" onClick={() => returnTask(task.id)}> <CheckIcon/> <span className="mx-2 ">Move Back To To Do</span></span>
+                  
                 </div>
               )}
             </div>

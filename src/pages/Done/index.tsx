@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import TrashIcon from "../icon";
 
 function Done() {
   const [doneTasks, setDoneTasks] = useState(() => {
@@ -24,7 +25,6 @@ function Done() {
     localStorage.setItem("trashTasks", JSON.stringify(trashTasks));
   }, [doneTasks, tasks, trashTasks]);
 
-  // Move the task back to Todo
   const toggleTask = (id) => {
     setDoneTasks((prevDoneTasks) => {
       const taskToToggle = prevDoneTasks.find((task) => task.id === id);
@@ -38,7 +38,6 @@ function Done() {
     });
   };
 
-  // Move the task to Trash
   const deleteTask = (id) => {
     setDoneTasks((prevDoneTasks) => {
       const taskToDelete = prevDoneTasks.find((task) => task.id === id);
@@ -48,7 +47,6 @@ function Done() {
       return prevDoneTasks.filter((task) => task.id !== id);
     });
 
-    // Close dropdown menu
     setVisibility(null);
   };
 
@@ -58,6 +56,7 @@ function Done() {
 
   return (
     <div>
+      
       <div className="todo-header">
         <h3>Done</h3>
       </div>
@@ -75,7 +74,8 @@ function Done() {
 
               {visibility === index && (
                 <div className="dropdownMenu">
-                  <div className="hover-cursor" onClick={() => deleteTask(task.id)}>Move to Trash</div>
+                  <TrashIcon/>
+                  <div className="hover-cursor mx-2" onClick={() => deleteTask(task.id)}>Move to Trash</div>
                 </div>
               )}
             </div>

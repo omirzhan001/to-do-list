@@ -1,79 +1,45 @@
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
+import "./style.css";
 
-function Todo() {
-  // Инициализация состояния с данными из localStorage
-  const [tasks, setTasks] = useState(() => {
-    const savedTasks = localStorage.getItem("tasks");
-    return savedTasks ? JSON.parse(savedTasks) : [
-      { id: 1, name: "Написать эссе", done: false },
-      { id: 2, name: "Пройти часовой курс CSS онлайн", done: false },
-      { id: 3, name: "Купить билеты в Сан-Франциско", done: false },
-      { id: 4, name: "Сходить в спортзал", done: false },
-      { id: 5, name: "Купить продукты", done: false },
-    ];
-  });
+function Header({ addTask }) {
+  const [newTask, setNewTask] = useState("");
 
-  // Сохраняем задачи в localStorage при их изменении
-  useEffect(() => {
+  const handleAddTask = () => {
+    if (newTask.trim() === "") return;
+    const prevTasks = localStorage.getItem("tasks");
+    const tasks = prevTasks ? JSON.parse(prevTasks) : [];
+    tasks.push({ id: tasks.length + 1, name: newTask, done: false });
     localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
-
-  // Обработчик изменения состояния чекбокса
-  const toggleTask = (id) => {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === id ? { ...task, done: !task.done } : task
-      )
-    );
-  };
-
-  // Добавление новой задачи
-  const addTask = (name) => {
-    const newTask = {
-      id: tasks.length + 1,
-      name,
-      done: false,
-    };
-    setTasks((prevTasks) => [...prevTasks, newTask]);
-  };
-
-  // Удаление задачи
-  const deleteTask = (id) => {
-    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+    setNewTask(""); 
+    if (addTask) {
+      addTask(newTask); 
+    }
   };
 
   return (
     <>
-      <header>
-        <h2>Список дел</h2>
-        <hr />
-        <ul>
-          {tasks.map((task) => (
-            <li key={task.id}>
-              <input
-                type="checkbox"
-                id={`task${task.id}`}
-                checked={task.done}
-                onChange={() => toggleTask(task.id)}
-              />
-              <label htmlFor={`task${task.id}`}>{task.name}</label>
-              <button onClick={() => deleteTask(task.id)}>Удалить</button>
-            </li>
-          ))}
-        </ul>
+      <header className="header">
+        <h2>Simple To Do List</h2>
+        <span className="text-header">
+          Today is an awesome day. The weather is awesome, you are awesome too!
+        </span>
+      </header>
+      <div className="todo-header">
         <input
           type="text"
           placeholder="Добавить новую задачу"
+          value={newTask}
+          onChange={(e) => setNewTask(e.target.value)}
           onKeyDown={(e) => {
-            if (e.key === "Enter" && e.target.value.trim() !== "") {
-              addTask(e.target.value.trim());
-              e.target.value = "";
-            }
+            if (e.key === "Enter") handleAddTask();
           }}
         />
-      </header>
+        <button onClick={handleAddTask} className="add-task-btn">
+          Add
+        </button>
+      </div>
     </>
   );
 }
 
-export default Todo;
+export default Header;

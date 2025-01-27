@@ -1,5 +1,8 @@
 /* style.css */
 .header {
+    display: flex;
+    flex-direction: column;
+
     background-color: #ffffff; /* Light gray background */
     padding: 20px;
     text-align: left;
@@ -7,7 +10,19 @@
     font-family: Arial, sans-serif;
     margin-bottom: 100px;
   }
-  
+  .header-input {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-end;
+  }
+  .header-input  input{
+    display: flex;
+    width: 300px;
+    height: 100px;
+  }
+
   .header h2 {
     margin-top: 50px;
     font-size: 34px;
@@ -23,3 +38,4 @@
     font-weight: 500;
   }
   
+ 
