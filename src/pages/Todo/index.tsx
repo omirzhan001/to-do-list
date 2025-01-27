@@ -1,17 +1,18 @@
-import { useState, useEffect } from "react";
-import './style.css'
+import React, { useState, useEffect } from "react";
+import "./style.css";
+
 function Todo() {
   const [tasks, setTasks] = useState(() => {
     const savedTasks = localStorage.getItem("tasks");
     return savedTasks
       ? JSON.parse(savedTasks)
       : [
-        { id: 1, name: "Написать эссе", done: false },
-        { id: 2, name: "Пройти часовой курс CSS онлайн", done: false },
-        { id: 3, name: "Купить билеты в Сан-Франциско", done: false },
-        { id: 4, name: "Сходить в спортзал", done: false },
-        { id: 5, name: "Купить продукты", done: false },
-      ];
+          { id: 1, name: "Написать эссе", done: false },
+          { id: 2, name: "Пройти часовой курс CSS онлайн", done: false },
+          { id: 3, name: "Купить билеты в Сан-Франциско", done: false },
+          { id: 4, name: "Сходить в спортзал", done: false },
+          { id: 5, name: "Купить продукты", done: false },
+        ];
   });
 
   const [doneTasks, setDoneTasks] = useState(() => {
@@ -24,6 +25,8 @@ function Todo() {
     return savedTrashTasks ? JSON.parse(savedTrashTasks) : [];
   });
 
+  const [visibility, setVisibility] = useState(null);
+
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
     localStorage.setItem("doneTasks", JSON.stringify(doneTasks));
@@ -35,10 +38,13 @@ function Todo() {
       const updatedTasks = prevTasks.map((task) =>
         task.id === id ? { ...task, done: !task.done } : task
       );
-      const doneTasks = updatedTasks.filter((task) => task.done);
-      const remainingTasks = updatedTasks.filter((task) => !task.done);
-      setDoneTasks((prev) => [...prev, ...doneTasks]);
-      return remainingTasks;
+
+      const toggledTask = updatedTasks.find((task) => task.id === id && task.done);
+      if (toggledTask) {
+        setDoneTasks((prev) => [...prev.filter((t) => t.id !== toggledTask.id), toggledTask]);
+      }
+
+      return updatedTasks.filter((task) => !task.done);
     });
   };
 
@@ -54,9 +60,23 @@ function Todo() {
   const deleteTask = (id) => {
     setTasks((prevTasks) => {
       const deletedTask = prevTasks.find((task) => task.id === id);
-      setTrashTasks((prev) => [...prev, deletedTask]);
+      if (deletedTask) {
+        setTrashTasks((prevTrashTasks) => {
+          // Проверяем, есть ли задача уже в корзине
+          const isTaskInTrash = prevTrashTasks.some((task) => task.id === deletedTask.id);
+          return isTaskInTrash ? prevTrashTasks : [...prevTrashTasks, deletedTask];
+        });
+      }
+      // Удаляем задачу из списка задач
       return prevTasks.filter((task) => task.id !== id);
     });
+  
+    // Закрыть выпадающее меню
+    setVisibility(null);
+  };
+
+  const toggleVisibility = (index) => {
+    setVisibility((prev) => (prev === index ? null : index));
   };
 
   return (
@@ -76,35 +96,36 @@ function Todo() {
           />
         </div>
         <hr />
-        <div class="dropdown show">
-  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Выпадающая ссылка
-  </a>
 
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-  </div>
-</div>
         <ul className="todo-list">
-          {tasks.map((task) => (
+          {tasks.map((task, index) => (
             <li key={task.id} className="todo-item">
+              <div className="taskItem">
+                <button
+                  className="button-item"
+                  onClick={() => toggleVisibility(index)}
+                >
+                  ⋮
+                </button>
 
-              <button onClick={() => deleteTask(task.id)}>Удалить</button>
-
+                {visibility === index && (
+                  <div className="dropdownMenu">
+                    <span onClick={() => deleteTask(task.id)}>Move to Trash</span>
+                  </div>
+                )}
+              </div>
               <input
                 type="checkbox"
                 id={`task${task.id}`}
                 checked={task.done}
                 onChange={() => toggleTask(task.id)}
               />
-              <label htmlFor={`task${task.id}`}>{task.name}</label>
-
+              <label className="mx-2" htmlFor={`task${task.id}`}>
+                {task.name}
+              </label>
             </li>
           ))}
         </ul>
-
       </header>
     </>
   );
