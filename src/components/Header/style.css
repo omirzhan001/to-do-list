@@ -1,0 +1,25 @@
+/* style.css */
+.header {
+    background-color: #ffffff; /* Light gray background */
+    padding: 20px;
+    text-align: left;
+    border-bottom: 0px solid #ffffff; /* Adds a subtle bottom border */
+    font-family: Arial, sans-serif;
+    margin-bottom: 100px;
+  }
+  
+  .header h2 {
+    margin-top: 50px;
+    font-size: 34px;
+    font-weight: 700;
+    color: #333; /* Dark gray text color */
+  }
+  
+  .text-header {
+    display: block;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #000000; /* Medium gray text color */
+    font-weight: 500;
+  }
+  

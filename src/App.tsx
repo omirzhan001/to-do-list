@@ -8,29 +8,29 @@ function App() {
 
 
   return (
-    <>
+    <div className='container'>
       <BrowserRouter>
       <Header />
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Todo</Link>
+      <nav >
+        <ul className='nav '>
+          <li className='button__nav  '>
+            <Link to="/" className='link_app'>To Do</Link>
           </li>
-          <li>
-            <Link to="/Done">Done</Link>
+          <li className='button__nav'>
+            <Link to="/Done" className='link_app'>Done</Link>
           </li>
-          <li>
-            <Link to="/Trash">Trash</Link>
+          <li className='button__nav '>
+            <Link to="/Trash" className='link_app'>Trash</Link>
           </li>
         </ul>
       </nav>
-      <Routes>
+      <Routes >
         <Route path="/" element={<Todo />} />
         <Route path="/Done" element={<Done />} />
         <Route path="/Trash" element={<Trash />} />
       </Routes>
     </BrowserRouter >
-    </>
+    </div>
   )
 }
 

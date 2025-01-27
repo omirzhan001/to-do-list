@@ -1,0 +1,32 @@
+.todo-header {
+    display: flex ;
+    justify-content: space-between;
+
+    background-color: #ffffff;
+    text-align: left;
+    border-bottom: 0px solid #ffffff;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+h3 {
+    margin-top: 20px;
+    font-size: 35px;
+    font-weight: 700;
+    color: #333;
+}
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    margin-top: 25px;
+}
+.todo-item {
+    display: flex;
+    align-items: center;
+    margin-top: 3px;
+    padding: 5px;
+    border-radius: 5px;
+}

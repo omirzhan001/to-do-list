@@ -1,0 +1,28 @@
+li {
+    list-style: none; 
+    padding: 0;      
+    margin: 0;       
+  }
+  .button__nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    width: 84px;
+    height: 40px;
+    border-radius: 100px;
+    background: linear-gradient(0deg, #F0F0F0, #F0F0F0), linear-gradient(0deg, rgba(8, 30, 52, 0.05), rgba(8, 30, 52, 0.05));
+    font-size: 14px;
+  }
+.link_app {
+    text-decoration: none;
+    color: #363636;
+    font-size: 14px;
+    font-weight: 500;
+
+  }
+  .nav{
+    display: flex;
+    justify-content: flex-start;
+  }
+
