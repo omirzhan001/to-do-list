@@ -33,7 +33,7 @@ function Header({ addTask }) {
       </header>
 
       <div className="header-input">
-          <div className="input-group">
+        <div className="input-group">
           <span>Add New To Do</span>
           <input
             ref={inputRef}
@@ -45,10 +45,12 @@ function Header({ addTask }) {
               if (e.key === "Enter") handleAddTask();
             }}
           />
-          <button onClick={handleAddTask} className="add-task-btn mt-2 mx-2">
-            Add
-          </button>
+          <div>
+            <button onClick={handleAddTask} className="add-task-btn mt-2 mx-2">
+              Add
+            </button>
           </div>
+        </div>
       </div>
 
     </>
