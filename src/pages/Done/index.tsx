@@ -75,7 +75,7 @@ function Done() {
 
               {visibility === index && (
                 <div className="dropdownMenu">
-                  <span onClick={() => deleteTask(task.id)}>Move to Trash</span>
+                  <div className="hover-cursor" onClick={() => deleteTask(task.id)}>Move to Trash</div>
                 </div>
               )}
             </div>

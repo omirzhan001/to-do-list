@@ -63,3 +63,18 @@ h3 {
     outline: none; 
     transition: all 0.3s ease;
 }
+
+.dropdownMenu {
+    padding: 10px;
+    background-color: #f0f0f0;
+  }
+  
+  .hover-cursor {
+    cursor: pointer;
+    color: blue;
+  }
+  
+  .hover-cursor:hover {
+    color: red;
+  }
+  
