@@ -3,10 +3,10 @@
     display: flex;
     flex-direction: column;
 
-    background-color: #ffffff; /* Light gray background */
+    background-color: #ffffff;
     padding: 20px;
     text-align: left;
-    border-bottom: 0px solid #ffffff; /* Adds a subtle bottom border */
+    border-bottom: 0px solid #ffffff; 
     font-family: Arial, sans-serif;
     margin-bottom: 20px;
   }
@@ -15,14 +15,14 @@
     margin-top: 50px;
     font-size: 34px;
     font-weight: 700;
-    color: #333; /* Dark gray text color */
+    color: #333; 
   }
   
   .text-header {
     display: block;
     margin-top: 20px;
     font-size: 14px;
-    color: #000000; /* Medium gray text color */
+    color: #000000; 
     font-weight: 500;
   }
   
@@ -61,7 +61,7 @@
 }
 
 .header-input input:focus {
-  border-color: #007bff; /* Highlight color when focused */
+  border-color: #007bff; 
 }
 
 .add-task-btn {
@@ -69,7 +69,7 @@
   width: 60px;
   font-size: 16px;
   color: #fff;
-  background-color: #2a3c55;
+  background-color: #5a6c85;
   border: none;
   border-radius: 80px;
   cursor: pointer;
@@ -77,10 +77,10 @@
 }
 
 .add-task-btn:hover {
-  background-color: #11273f; /* Darker blue for hover state */
+  background-color: #2a4563; 
 }
 
 .add-task-btn:active {
-  background-color: #0d1d2e; /* Even darker blue for active state */
+  background-color: #0d1d2e; 
 }
 
