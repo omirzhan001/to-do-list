@@ -27,12 +27,12 @@ li {
 }
 
 .button__nav:hover {
-  background: #7c858f;
+  background: #c9cbcc;
   color: #ffffff;
 }
 
 .button__nav.active {
-  background: #6a6a6b;
+  background: #4e4e4e;
   color: #ffffff;
   font-weight: bold;
 }
