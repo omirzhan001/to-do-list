@@ -51,6 +51,11 @@ function Header({ addTask }) {
             </button>
           </div>
         </div>
+        <div>
+          <img src="" alt="" />
+          <p></p>
+        </div>
+
       </div>
 
     </>

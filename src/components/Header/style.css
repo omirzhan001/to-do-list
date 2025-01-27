@@ -29,10 +29,11 @@
  /*  */
 .header-input {
   display: flex;
-  justify-content: flex-end;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: flex-end;;
+      justify-content: flex-end;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-content: flex-end;
+      align-items: flex-end;
 }
 .input-group {
   display: flex;
