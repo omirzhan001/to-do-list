@@ -74,7 +74,13 @@ function Trash() {
                 </div>
               )}
             </div>
-            <span className="mx-2">{task.name}</span>
+            <input
+              type="checkbox"
+              id={`task${task.id}`}
+              checked={task.done}
+              onChange={() => toggleTask(task.id)}
+            />
+            <div className={task.done ? "underline-text" : ""}>{task.name}</div>
           </li>
         ))}
       </ul>
