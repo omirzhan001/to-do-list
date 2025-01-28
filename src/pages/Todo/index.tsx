@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 import TrashIcon from "../icon";
-import Header from "../../components/Header/";
 
 function Todo() {
   const [tasks, setTasks] = useState(() => {
