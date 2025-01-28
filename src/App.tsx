@@ -50,6 +50,14 @@ function App() {
           <Route path="/Trash" element={<Trash />} />
         </Routes>
       </BrowserRouter>
+      <div className='footer' >
+        <div >
+        <h6>Made with ❤️ at nFactorial in 2022</h6>
+        </div>
+        <div>
+        <p>Credits: icons from Icons8.</p>
+        </div>
+      </div>
     </div>
   )
 }

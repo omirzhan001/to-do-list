@@ -36,3 +36,16 @@ li {
   color: #ffffff;
   font-weight: bold;
 }
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #4e4e4e;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+.footer h6 {
+  font-size: 14px;
+  font-weight: 500;
+}
