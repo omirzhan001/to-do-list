@@ -60,7 +60,7 @@
 @media screen and (max-width: 1000px) {
   .input-group {
     top: 17%; 
-    right: 18%;
+    right: 1%;
   }
 }
 
@@ -120,7 +120,7 @@
   height: 35px;
   width: 35px;
   font-size: 16px;
-  color: #fff;
+  color: #1e2b4d;
   background-color: #1e2b4d;
   border-radius: 80px;
   cursor: pointer;
