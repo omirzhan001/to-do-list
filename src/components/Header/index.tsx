@@ -57,6 +57,7 @@ function Header({ addTask }) {
               <input
                 ref={inputRef}
                 type="text"
+                className="input-add-task"
                 placeholder="Добавить новую задачу"
                 value={newTask}
                 onChange={(e) => setNewTask(e.target.value)}
