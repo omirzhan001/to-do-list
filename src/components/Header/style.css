@@ -58,12 +58,38 @@
     right: 16%;
   }
 }
+@media screen and (max-width: 1600px) {
+  .input-group {
+    top: 17%; 
+    right: 12%;
+  }
+}
 @media screen and (max-width: 1000px) {
   .input-group {
     top: 17%; 
     right: 16%;
   }
 }
+@media screen and (max-width: 800px) {
+  .input-group {
+    top: 17%; 
+    right: 13%;
+  }
+}
+@media screen and (max-width: 800px) {
+  .input-group {
+    top: 17%; 
+    right: 20%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .input-group {
+    top: 17%; 
+    right: 30%;
+  }
+}
+
+
 
 .header-input input {
   /*  flex: 1; */
