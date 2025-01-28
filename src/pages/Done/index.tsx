@@ -73,7 +73,7 @@ function Done() {
               </button>
 
               {visibility === index && (
-                <div className="dropdownMenu">
+                <div className="dropdownMenu ">
                   <TrashIcon/>
                   <div className="hover-cursor mx-2" onClick={() => deleteTask(task.id)}>Move to Trash</div>
                 </div>
@@ -85,8 +85,8 @@ function Done() {
               checked={task.done}
               onChange={() => toggleTask(task.id)}
             />
-            <label htmlFor={`task${task.id}`} className="mx-2">
-              {task.name}
+            <label htmlFor={`task${task.id}`} className="mx-2 ">
+              <span className="underline-text">{task.name}</span>
             </label>
           </li>
         ))}
