@@ -7,7 +7,7 @@ import Trash from './pages/Trash'
 
 function App() {
   return (
-    <div className='container'>
+    <div className='container '>
       <BrowserRouter>
         <Header />
         <nav>
